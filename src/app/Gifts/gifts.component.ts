@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './gifts.component.html',
-  styleUrls: ['./gifts.component.scss'],
+  styles: [],
   providers: [GiftService]
 })
 export class GiftsComponent {
