@@ -1,1 +1,19 @@
-<p>gifts works!</p>
+<div class="mt-8 mx-auto">
+    <input type="text" placeholder="Buscar..."
+        class="py-2.5 px-2 rounded-md bg-gray-200 w-full outline-zinc-600 focus:outline-greeb-800"
+        name="buscar" [(ngModel)]="buscar" (keyup.enter)="busqueda()" />
+</div>
+
+<section class="grid justify-center items-center md:grid-cols-4 gap-3 my-5 ms-20 me-6">
+    <div *ngFor="let resultado of resultados">
+        <div class="flex flex-col items-center">
+            <div class="relative rounded-md">
+                <img [src]="resultado.images.downsized_medium.url" [alt]="resultado.title" class="mx-auto max-w-full" />
+                <div class="absolute bottom-0 left-0 right-0 text-white text-center bg-black/50 py-2">
+                    {{resultado.title}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
