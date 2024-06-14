@@ -1,10 +1,10 @@
-<div class="mt-8 mx-auto">
+<div class="mt-8 mx-auto w-3/4">
     <input type="text" placeholder="Buscar..."
-        class="py-2.5 px-2 rounded-md bg-gray-200 w-full outline-zinc-600 focus:outline-greeb-800"
+        class="py-2.5 px-2 rounded-md bg-[#dccaa4] w-full placeholder:text-gray-700 outline-zinc-600 focus:outline-greeb-800"
         name="buscar" [(ngModel)]="buscar" (keyup.enter)="busqueda()" />
 </div>
 
-<section class="grid justify-center items-center md:grid-cols-4 gap-3 my-5 ms-20 me-6">
+<section class="grid justify-center items-center md:grid-cols-4 gap-3 my-5 mx-8">
     <div *ngFor="let resultado of resultados">
         <div class="flex flex-col items-center">
             <div class="relative rounded-md">

@@ -1,1 +1,28 @@
-<p>sidebar works!</p>
+<!-- component -->
+<div class="fixed sidebar bg-[#c4bcab] h-screen w-60 "
+    [ngClass]="isMobile() && collapsed ? 'sidenav-collapsed ' : 'w-[16rem] z-10'">
+    <div class="mb-2 p-4 " [ngClass]="isMobile() && collapsed ? 'hidden' : 'z-20 block'">
+        <h5 class="block antialiased text-center text-xl font-semibold l text-gray-900">
+            GiftsApp
+        </h5>
+    </div>
+
+    <nav class="flex flex-col items-center"  [ngClass]="isMobile() && collapsed ? 'hidden' : 'z-20 block'">
+        <ul class="px-5" >
+            <li *ngFor="let item of historial" class="text-center bg-[#b4ab9a] mb-2 px-8 py-1 outline-black">
+                <span>{{item}}</span>
+            </li>
+        </ul>
+
+        <button class="rounded-md bg-[#ede4d3] hover:bg-[#f0d8a9] px-3 py-2 " (click)="eliminarHistorial()">Eliminar</button>
+    </nav>
+</div>
+
+<div *ngIf="isMobile()" class="fixed right-5 bottom-10 z-10">
+    <button class="bg-[#ffd299] p-3 rounded-md" (click)="toggleSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+    </button>
+</div>

@@ -6,18 +6,40 @@ import { Datos, IGifts } from '@app/core/interfaces/gifts';
   providedIn: 'root'
 })
 export class GiftService {
-  apiKey = 'qT9irSevErRjBnALZbvEoav7YSh95Tph';
-  resultados: Datos [] = [];
+  apiKey = 'WWXS9ODICKkWJvxptRFeu8bdwCqtoWbW';
+  resultados: Datos[] = [];
+  historial: string[] = [];
 
   constructor(private http: HttpClient) { }
 
   buscarGifs(query: string = "Superman", limit: number = 12) {
-    console.log(query);
     this.http.get<IGifts>(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=${limit}`)
       .subscribe(resp => {
-        // console.log(resp);
+        this.agregarHistorial(query);
         this.resultados = resp.data;
-        
-      })
+    })
+  }
+
+  agregarHistorial(busqueda: string) {
+    if (this.historial.includes(busqueda) && busqueda !== '') {
+      this.historial = this.historial.filter(h => h !== busqueda);
+      this.historial.unshift(busqueda); 
+    } else {
+      this.historial.unshift(busqueda);
+    }
+
+    this.historial = this.historial.splice(0, 10);
+    localStorage.setItem('historial', this.historial.join(','));
+  }
+
+  getLeerHistorial() {
+    const historial = localStorage.getItem('historial') || '';
+    this.historial = historial.split(',');
+    return this.historial;
+  }
+
+  borrarHistorial() {
+    localStorage.removeItem('historial');
+    this.historial = [];
   }
 }
