@@ -18,3 +18,10 @@ Este proyecto es una prueba técnica, en la cual se debe realizar una aplicació
 - Angular 16.2.14
 - Tailwindcss
 - Giphy API
+
+
+## Vista Previa:
+
+<video width="960" height="560" controls>
+  <source src="media/PruebaTecnica.mp4" type="video/mp4">
+</video>
